@@ -13,6 +13,7 @@ import Decimal, { format, formatTime } from "util/bignum";
 import { render } from "util/vue";
 import { computed, toRaw } from "vue";
 import prestige from "./layers/prestige";
+import test_layer from "./layers/test";
 
 /**
  * @hidden
@@ -33,7 +34,7 @@ export const main = createLayer("main", function (this: BaseLayer) {
     const oomps = trackOOMPS(points, pointGain);
 
     const tree = createTree(() => ({
-        nodes: [[prestige.treeNode]],
+        nodes: [[prestige.treeNode, test_layer.treeNode]],
         branches: [],
         onReset() {
             points.value = toRaw(this.resettingNode.value) === toRaw(prestige.treeNode) ? 0 : 10;
